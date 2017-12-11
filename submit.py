@@ -3,7 +3,6 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import load_model
 import pandas as pd
 import bson
-from keras.applications.xception import preprocess_input
 import os
 from collections import defaultdict
 from tqdm import *
@@ -43,7 +42,10 @@ submission_df.head()
 
 test_bson_path = os.path.join("input/test.bson")
 
-test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
+test_datagen = ImageDataGenerator(
+        rescale=1./255)
+     
+
 data = bson.decode_file_iter(open(test_bson_path, "rb"))
 
 model = load_model('Inception.CSdiscount.weights.h5')
@@ -60,7 +62,6 @@ with tqdm(total=num_test_products) as pbar:
             x = img_to_array(img)
             x = test_datagen.random_transform(x)
             x = test_datagen.standardize(x)
-            x = x / 255
             # Add the image to the batch.
             batch_x[i] = x
         prediction = model.predict(batch_x, batch_size=num_imgs)
