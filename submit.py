@@ -60,6 +60,7 @@ with tqdm(total=num_test_products) as pbar:
             x = img_to_array(img)
             x = test_datagen.random_transform(x)
             x = test_datagen.standardize(x)
+            x = x / 255
             # Add the image to the batch.
             batch_x[i] = x
         prediction = model.predict(batch_x, batch_size=num_imgs)
