@@ -1,5 +1,5 @@
 # Cdiscount-Kaggle-Competition
-15 million images - 5000 multi-class classification task!
+15 million images - 5270 multi-class classification task!
 
 Single submission scoring 69% on public and x% on private leaderboard.
 
