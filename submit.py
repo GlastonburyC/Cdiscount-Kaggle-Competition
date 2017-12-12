@@ -43,9 +43,14 @@ submission_df.head()
 test_bson_path = os.path.join("input/test.bson")
 
 test_datagen = ImageDataGenerator(
-        rescale=1./255)
-     
-
+        rescale=1./255,
+        shear_range=0.2,
+        zoom_range=0.3,
+        rotation_range=180.,
+        width_shift_range=0.3,
+        height_shift_range=0.3,
+        horizontal_flip=True)
+ 
 data = bson.decode_file_iter(open(test_bson_path, "rb"))
 
 model = load_model('Inception.CSdiscount.weights.h5')
