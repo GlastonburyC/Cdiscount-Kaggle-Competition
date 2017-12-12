@@ -13,6 +13,8 @@ More than 5000 categories: yes this is quite an extreme multi-class classificati
 
 Ran an InceptionV3 pretrained model for 30 epochs (lr=0.01) and then for 10 epochs (lr=0.001).
 
+`Performance: Kaggle Public leaderboard = 69% - No Data Augmentation.`
+
 To run model:
 
 `python bgen_InceptionV3.py`
