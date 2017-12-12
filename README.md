@@ -1,7 +1,7 @@
 # Cdiscount-Kaggle-Competition
 15 million images - 5000 multi-class classification task!
 
-Single submission scoring x on public and y on private leaderboard.
+Single submission scoring 69% on public and x% on private leaderboard.
 
 Image classification challenge from France's largest e-commerce company.
 
@@ -12,8 +12,6 @@ More than 5000 categories: yes this is quite an extreme multi-class classificati
 ```
 
 Ran an InceptionV3 pretrained model for 30 epochs (lr=0.01) and then for 10 epochs (lr=0.001).
-
-`Performance: Kaggle Public leaderboard = 69% - No Data Augmentation.`
 
 To run model:
 
