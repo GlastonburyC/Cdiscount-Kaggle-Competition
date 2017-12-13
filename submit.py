@@ -42,17 +42,17 @@ submission_df.head()
 
 test_bson_path = os.path.join("input/test.bson")
 
-# test_datagen = ImageDataGenerator(
-#         rescale=1./255,
-#         shear_range=0.2,
-#         zoom_range=0.3,
-#         rotation_range=180.,
-#         width_shift_range=0.3,
-#         height_shift_range=0.3,
-#         horizontal_flip=True)
- 
 test_datagen = ImageDataGenerator(
-        rescale=1./255)
+        rescale=1./255,
+        shear_range=0.2,
+        zoom_range=0.3,
+        rotation_range=180.,
+        width_shift_range=0.3,
+        height_shift_range=0.3,
+        horizontal_flip=True)
+ 
+# test_datagen = ImageDataGenerator(
+#         rescale=1./255)
     
 data = bson.decode_file_iter(open(test_bson_path, "rb"))
 
@@ -73,7 +73,7 @@ with tqdm(total=num_test_products) as pbar:
             # Add the image to the batch.
             batch_x[i] = x
         prediction = model.predict(batch_x, batch_size=num_imgs)
-        avg_pred = prediction.max(axis=0) # .mean
+        avg_pred = prediction.mean(axis=0) # .mean
         cat_idx = np.argmax(avg_pred)
         submission_df.iloc[c]["category_id"] = idx2cat[cat_idx]        
         pbar.update()
