@@ -42,17 +42,17 @@ submission_df.head()
 
 test_bson_path = os.path.join("input/test.bson")
 
-test_datagen = ImageDataGenerator(
-        rescale=1./255,
-        shear_range=0.2,
-        zoom_range=0.3,
-        rotation_range=180.,
-        width_shift_range=0.3,
-        height_shift_range=0.3,
-        horizontal_flip=True)
- 
 # test_datagen = ImageDataGenerator(
-#         rescale=1./255)
+#         rescale=1./255,
+#         shear_range=0.2,
+#         zoom_range=0.3,
+#         rotation_range=180.,
+#         width_shift_range=0.3,
+#         height_shift_range=0.3,
+#         horizontal_flip=True)
+ 
+ test_datagen = ImageDataGenerator(
+         rescale=1./255)
     
 data = bson.decode_file_iter(open(test_bson_path, "rb"))
 
@@ -68,7 +68,7 @@ with tqdm(total=num_test_products) as pbar:
             # Load and preprocess the image.
             img = load_img(io.BytesIO(bson_img), target_size=(299, 299))
             x = img_to_array(img)
-            x = test_datagen.random_transform(x)
+            #x = test_datagen.random_transform(x)
             x = test_datagen.standardize(x)
             # Add the image to the batch.
             batch_x[i] = x
